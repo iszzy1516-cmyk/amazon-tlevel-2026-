@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="styles/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Amazon T-Level</title>
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      <img src="assets/images/amazon-logo.png" alt="Amazon Logo">
+      <span>T-Level Courses</span>
+    </a>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">☰</label>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="#" onclick="logout()" style="color: var(--amazon-orange);">Sign Out</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container container-wide">
+      <h1 class="page-title">Welcome back</h1>
+      <div id="alertBox" class="alert alert-success visible">You are signed in.</div>
+
+      <div style="display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 24px;">
+        <div class="choice-card" style="cursor: default;">
+          <div class="choice-icon">📚</div>
+          <div class="choice-info">
+            <h3>My Courses</h3>
+            <p>View enrolled and saved courses.</p>
+          </div>
+        </div>
+        <div class="choice-card" style="cursor: default;">
+          <div class="choice-icon">⚙️</div>
+          <div class="choice-info">
+            <h3>Account Settings</h3>
+            <p>Update email, location, and preferences.</p>
+          </div>
+        </div>
+        <div class="choice-card" style="cursor: default;">
+          <div class="choice-icon">📋</div>
+          <div class="choice-info">
+            <h3>Applications</h3>
+            <p>Track your course applications.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-2">
+        <a href="index.html" class="btn btn-secondary">Browse Courses</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-bottom" style="border:none; margin-top:0;">
+      © 2026 Amazon T-Level Portal. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    async function logout() {
+      try {
+        await fetch('/api/logout', { method: 'POST' });
+      } catch(e) {}
+      window.location.href = 'choose-login.html';
+    }
+  </script>
+</body>
+</html>
